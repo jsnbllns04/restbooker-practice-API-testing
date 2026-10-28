@@ -13,6 +13,12 @@ Full booking lifecycle, with response assertions on each step:
 | Get / update / partial update / delete | GET, PUT, PATCH, DELETE /booking/{id} | Status codes and updated values |
 | Get deleted booking | GET /booking/{id} | 404 after deletion |
 
+## Negative Tests
+- Invalid credentials return no token
+- Update and delete are rejected without a token or with an invalid token (403)
+- Requesting a non-existent booking returns 404
+- Creating a booking with a missing required field is rejected
+
 ## Approach
 - Collection and environment variables (`base_url`, `bookingId`, `token`)
 - Requests chained by storing values from earlier responses
